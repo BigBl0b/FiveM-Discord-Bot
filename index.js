@@ -13,20 +13,20 @@ client.on("ready", () => {
   console.log("Miscellaneous Commands Ready");
   console.log("Moderation Commands Ready");
   console.log("Bot is online!");
-
   const Gamedig = require('gamedig');
+
   Gamedig.query({
-      type: 'fivem',
-      host: '54.37.244.52', // This needs to be a string
-      port: '30265' // This needs to be a number & is optional, unless you're not using the default port for that gameserver type
-  }).then((state) => {
-      console.log(state); // You can use this output to get the player count.
+    type: 'fivem',
+    host: '54.37.244.52',
+    port: '30265'
+  }).then(async(state) => {
+      console.log(state);
       let players = state.players.length;
       let maxPlayers = state.maxplayers;
 
       client.user.setActivity(players + " / " + maxPlayers);
   }).catch((error) => {
-      console.log("Server is offline");
+      console.log(error);
   });
 });
 // client.user.setActivity(Players+ ' / '+MaxPlayers +' Players');
